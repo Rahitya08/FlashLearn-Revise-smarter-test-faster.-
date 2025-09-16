@@ -6,15 +6,10 @@ from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
 
-# -------------------------------------------------
-# Flask Configuration
-# -------------------------------------------------
+
 app = Flask(__name__)
 
-# IMPORTANT: encode special characters in your DB password
-# Example password: W7301@jqir#
-# Encode: @ -> %40, # -> %23
-# So: W7301@jqir#  becomes  W7301%40jqir%23
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:W7301%40jqir%23@localhost:3306/flashcard"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -23,9 +18,6 @@ app.secret_key = os.urandom(24)
 csrf = CSRFProtect(app)
 db = SQLAlchemy(app)
 
-# -------------------------------------------------
-# Database Models
-# -------------------------------------------------
 class Card(db.Model):
     __tablename__ = "cards"
     card_id = db.Column(db.Integer, primary_key=True)
@@ -50,9 +42,6 @@ class User(db.Model):
     hash = db.Column(db.String(255), nullable=False)
     decks = db.relationship("Deck", back_populates="user", lazy=True, cascade="all, delete")
 
-# -------------------------------------------------
-# Routes
-# -------------------------------------------------
 @app.route('/')
 def index():
     if "user" not in session:
@@ -98,12 +87,12 @@ def add_deck():
             flash("User not found", "danger")
             return redirect("/")
 
-        # Step 1: create deck and commit to get deck_id
+      
         new_deck = Deck(name=name, description=description, user=user)
         db.session.add(new_deck)
         db.session.commit()  # now new_deck.deck_id is set
 
-        # Step 2: add cards with did=new_deck.deck_id
+     
         for i in range(1, num_of_cards + 1):
             ques = request.form.get(f"question{i}")
             ans = request.form.get(f"answer{i}")
@@ -112,7 +101,7 @@ def add_deck():
             new_card = Card(ques=ques, ans=ans, did=new_deck.deck_id)
             db.session.add(new_card)
 
-        # Step 3: commit cards
+    
         db.session.commit()
         flash("Deck and cards added successfully!", "success")
         return redirect("/")
@@ -224,7 +213,7 @@ def study():
         flash("Deck not found!", "warning")
         return redirect("/")
 
-    # Convert Card objects to dictionaries so they are JSON serializable
+  
     cards_dict = [{"card_id": c.card_id, "ques": c.ques, "ans": c.ans} for c in deck.cards]
 
     return render_template(
@@ -236,10 +225,8 @@ def study():
 
 
 
-# -------------------------------------------------
-# Run + Create Tables
-# -------------------------------------------------
+
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # ensures tables are created
+        db.create_all()  
     app.run(debug=True)
