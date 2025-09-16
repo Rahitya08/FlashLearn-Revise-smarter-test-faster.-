@@ -7,7 +7,7 @@ Study Deck
 {% block main %}
 <div class="container py-4">
 
-    <!-- Logged in info + logout -->
+    
     {% if user %}
     <div class="d-flex justify-content-end mb-3">
         <span class="me-2">Logged in as {{ user }}</span>
@@ -17,7 +17,7 @@ Study Deck
 
     <h3 class="mb-4">Study: {{ deck_name }}</h3>
 
-    <!-- Live progress -->
+   
     <div class="mb-3">
         <span>Correct: <strong id="liveCorrect">0</strong></span>
         <span class="ms-3">Incorrect: <strong id="liveIncorrect">0</strong></span>
@@ -25,16 +25,16 @@ Study Deck
 
     <div class="card shadow-sm border-0">
         <div class="card-body">
-            <!-- Card display -->
+          
             <div id="cardContainer"></div>
 
-            <!-- Action buttons -->
+          
             <div class="mt-3 d-flex justify-content-between" id="actionButtons">
                 <button class="btn btn-success" id="correctBtn">Correct</button>
                 <button class="btn btn-danger" id="incorrectBtn">Incorrect</button>
             </div>
 
-            <!-- Result summary -->
+ 
             <div class="mt-3" id="resultSummary" style="display:none;">
                 <h5>Quiz Finished!</h5>
                 <p>Total Correct: <span id="totalCorrect"></span></p>
@@ -49,7 +49,7 @@ Study Deck
 </div>
 
 <script>
-// Shuffle cards randomly
+
 let cards = {{ cards|tojson }};
 cards = cards.sort(() => Math.random() - 0.5);
 
@@ -67,7 +67,7 @@ const liveCorrect = document.getElementById("liveCorrect");
 const liveIncorrect = document.getElementById("liveIncorrect");
 
 function showCard(index) {
-    // Quiz finished
+
     if (index >= cards.length) {
         cardContainer.style.display = "none";
         document.getElementById("actionButtons").style.display = "none";
@@ -87,10 +87,8 @@ function showCard(index) {
         <button id="showAnswerBtn" class="btn btn-outline-secondary mt-2">Show Answer</button>
     `;
 
-    // Hide buttons initially
     document.getElementById("actionButtons").style.display = "none";
 
-    // Show buttons only after showing answer and if not last card
     document.getElementById("showAnswerBtn").addEventListener("click", () => {
         document.getElementById("answerContainer").style.display = "block";
 
@@ -102,7 +100,7 @@ function showCard(index) {
     });
 }
 
-// Event handlers
+
 correctBtn.addEventListener("click", () => {
     correctCount++;
     liveCorrect.innerText = correctCount;
@@ -117,7 +115,8 @@ incorrectBtn.addEventListener("click", () => {
     showCard(currentCardIndex);
 });
 
-// Initialize first card
+
 showCard(currentCardIndex);
 </script>
 {% endblock %}
+
