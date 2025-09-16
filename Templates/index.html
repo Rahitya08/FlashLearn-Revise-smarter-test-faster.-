@@ -13,13 +13,13 @@
                 <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-5 text-center">
                     
-                    <!-- App Title -->
+                  
                     <h2 class="fw-bold mb-3">Welcome to FlashLearn!</h2>
                     <p class="text-muted mb-4">
                     Create decks, practice with flashcards, and track your learning progress.
                     </p>
                     
-                    <!-- CTA buttons -->
+                    
                     <div class="d-grid gap-3">
                     <a href="/login" class="btn primary-btn btn-lg rounded-pill">Log In</a>
                     <a href="/register" class="btn outline-primary-btn btn-lg rounded-pill">Sign Up</a>
@@ -90,10 +90,10 @@
                 <div class="card deck h-100 shadow-lg border-0 rounded-3">
                 <div class="card-body d-flex flex-column">
                     
-                    <!-- Title -->
+                  
                     <h5 class="card-title fw-bold primary-text">{{ deck.name }}</h5>
                     
-                    <!-- Description -->
+                
                     <p class="card-text text-muted flex-grow-1">
                         {% if deck.description %}
                             {{ deck.description }}
@@ -102,7 +102,7 @@
                         {% endif %}
                     </p>
                     
-                    <!-- Buttons -->
+                    
                     <form action="/study" class="d-flex justify-content-between">
                     <input type="hidden" name="deck_id" value="{{ deck.deck_id }}">
                     <input type="hidden" name="deck_name" value="{{ deck.name }}">
@@ -120,7 +120,6 @@
                 </div>
             </div>
 
-            <!-- Confirm delete popup -->
             <div class="modal fade" id="cnfDel{{ deck.deck_id }}">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -161,4 +160,5 @@
         <span class="fab-label ms-2 primary-bg">Create Deck</span>
     </div>
     {% endif %}
+
 {% endblock %}
