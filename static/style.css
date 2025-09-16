@@ -1,0 +1,129 @@
+
+:root {
+    --primary-color: #4e73df;
+    --primary-color-dark: #2e59d9;
+    --primary-text-color: #1a1a1a;
+    --secondary-color: #f8f9fc;
+    --danger-color: #e74a3b;
+    --success-color: #1cc88a;
+    --light-text: #6c757d;
+    --border-radius: 0.5rem;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--primary-text-color);
+}
+
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    transition: background-color var(--transition-speed);
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.outline-primary-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all var(--transition-speed);
+}
+
+.outline-primary-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+
+.primary-bg {
+    background-color: var(--primary-color) !important;
+}
+
+.primary-text {
+    color: var(--primary-color) !important;
+}
+
+
+.card {
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+.deck .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+input.form-control, textarea.form-control {
+    border-radius: var(--border-radius);
+    border: 1px solid #ced4da;
+}
+
+textarea.no-resize {
+    resize: none;
+}
+
+
+.alert {
+    border-radius: var(--border-radius);
+}
+
+.fab .fab-label {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.fab .fab-label:hover {
+    background-color: var(--primary-color-dark);
+}
+
+
+.modal-content {
+    border-radius: var(--border-radius);
+}
+
+
+#cardContainer {
+    min-height: 150px;
+    padding: 1rem;
+}
+
+#actionButtons button {
+    min-width: 120px;
+}
+
+
+@media (max-width: 576px) {
+    .fab {
+        bottom: 15px;
+        right: 15px;
+    }
+    .fab .fab-label {
+        display: none;
+    }
+}
