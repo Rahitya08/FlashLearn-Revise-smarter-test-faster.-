@@ -17,7 +17,7 @@
                     <form action="/add_deck" method="post" id="deckForm">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-                        <!-- Deck info -->
+                       
                         <div class="mb-3">
                             <label for="name" class="form-label">Deck Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="e.g., Biology Basics" required>
@@ -29,10 +29,10 @@
                                       placeholder="Optional short description (max 255 chars)"></textarea>
                         </div>
 
-                        <!-- Hidden number-of-cards (server reads this) -->
+                      
                         <input type="hidden" id="num_of_cards" name="num_of_cards" value="1">
 
-                        <!-- Cards section -->
+                    
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <h6 class="mb-0">Cards</h6>
                             <span class="badge bg-secondary" id="cardCountBadge">1 / 10</span>
@@ -56,7 +56,7 @@
                             </div>
                         </fieldset>
 
-                        <!-- Actions -->
+                        
                         <div class="d-flex gap-2 mt-3">
                             <button type="button" class="btn btn-outline-secondary" id="addCardBtn">
                                 <i class="bi bi-plus-lg me-1"></i> Add another card
@@ -105,3 +105,4 @@ document.getElementById("addCardBtn").addEventListener("click", () => {
 });
 </script>
 {% endblock %}
+
